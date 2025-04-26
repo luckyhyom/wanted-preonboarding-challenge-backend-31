@@ -1,0 +1,36 @@
+services:
+  mysql:
+    container_name: mysql-container
+    image: mysql:8.0
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: shop
+      MYSQL_USER: user
+      MYSQL_PASSWORD: userpassword
+    volumes:
+      - shop-mysql:/var/lib/mysql
+    networks:
+      - mysql
+
+  phpmyadmin:
+    container_name: phpmyadmin-container
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - 8080:80
+    environment:
+      PMA_HOST: mysql
+      PMA_USER: user
+      PMA_PASSWORD: userpassword
+    depends_on:
+      - mysql
+    networks:
+      - mysql
+
+networks:
+  mysql:
+    driver: bridge # 내부에서 서비스명으로 접근 가능
+
+volumes:
+  shop-mysql: # 영구 저장용 볼륨
