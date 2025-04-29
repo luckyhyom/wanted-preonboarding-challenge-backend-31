@@ -17,7 +17,7 @@ export class UserEntity {
 
     const now = props.createdAt ?? new Date();
     return new UserEntity({
-      id: props.id ?? 0, // 0 ⇒ not persisted yet
+      id: props.id ?? BigInt(0), // MySQL의 AUTO_INCREMENT 컬럼에 0 또는 NULL 을 삽입하면, “다음 시퀀스 값”을 자동으로 할당
       name: props.name,
       email: props.email,
       avatarUrl: props.avatarUrl ?? null,
