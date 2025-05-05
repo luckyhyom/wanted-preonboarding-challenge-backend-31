@@ -4,6 +4,7 @@ import { UserModule } from './modules/user/user.module';
 import { TagModule } from './modules/tag/tag.module';
 import { BrandModule } from './modules/brand/brand.module';
 import { SellerModule } from './modules/seller/seller.module';
+import { CategoryModule } from './modules/category/category.module';
 
 @Module({
   imports: [
@@ -21,6 +22,7 @@ import { SellerModule } from './modules/seller/seller.module';
     SellerModule,
     BrandModule,
     TagModule,
+    CategoryModule,
   ],
 })
 export class AppModule {}
